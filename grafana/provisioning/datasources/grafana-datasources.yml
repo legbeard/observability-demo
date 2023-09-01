@@ -1,0 +1,34 @@
+# Configuration file version
+apiVersion: 1
+
+# List of data sources to delete from the database.
+deleteDatasources:
+  - name: Prometheus
+    orgId: 1
+  - name: Loki
+    orgId: 1
+  - name: Tempo
+    orgId: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    uid: prometheus_uid
+    orgId: 1
+    url: http://prometheus:9090
+  
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    orgId: 1
+    jsonData:
+      maxLines: 1000
+
+  - name: Tempo
+    type: tempo
+    access: proxy
+    uid: tempo_uid
+    orgId: 1
+    url: http://tempo:3200

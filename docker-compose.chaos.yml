@@ -1,0 +1,229 @@
+services:
+  consumer:
+    environment:
+      Example__RabbitInputQueue: fruit_consume
+
+  producer:
+    environment:
+      Example__RabbitOutputQueue: fruit_produce
+      Example__RabbitRoutingKey: fruit_produce
+
+  forward-1:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-1
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_produce
+      Example__RabbitOutputQueue: fruit_forward_2
+      Example__RabbitRoutingKey: fruit_forward_2
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-1
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-2:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-2
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_2
+      Example__RabbitOutputQueue: fruit_forward_3
+      Example__RabbitRoutingKey: fruit_forward_3
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-2
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-3:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-3
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_3
+      Example__RabbitOutputQueue: fruit_forward_4
+      Example__RabbitRoutingKey: fruit_forward_4
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-3
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-4:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-4
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_4
+      Example__RabbitOutputQueue: fruit_forward_5
+      Example__RabbitRoutingKey: fruit_forward_5
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-4
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-5:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-5
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_5
+      Example__RabbitOutputQueue: fruit_forward_6
+      Example__RabbitRoutingKey: fruit_forward_6
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-5
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-6:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-6
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_6
+      Example__RabbitOutputQueue: fruit_forward_7
+      Example__RabbitRoutingKey: fruit_forward_7
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-6
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-7:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-7
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_7
+      Example__RabbitOutputQueue: fruit_forward_8
+      Example__RabbitRoutingKey: fruit_forward_8
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-7
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-8:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-8
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_8
+      Example__RabbitOutputQueue: fruit_forward_9
+      Example__RabbitRoutingKey: fruit_forward_9
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-8
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-9:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-9
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_9
+      Example__RabbitOutputQueue: fruit_forward_10
+      Example__RabbitRoutingKey: fruit_forward_10
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-9
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started
+
+  forward-10:
+    build:
+      context: ./MetricsExample
+      dockerfile:
+        Dockerfile
+    hostname: forward-9
+    restart: always
+    environment:
+      Example__RabbitPort: 5672
+      Example__RabbitHost: rabbitmq
+      Example__RabbitExchange: example
+      Example__RabbitInputQueue: fruit_forward_10
+      Example__RabbitOutputQueue: fruit_consume
+      Example__RabbitRoutingKey: fruit_consume
+      Example__Mode: forwarder
+      Example__ServiceName: rabbit-forward-10
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      otelcol:
+        condition: service_started

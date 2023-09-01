@@ -1,0 +1,48 @@
+services:
+  consumer:
+    environment:
+      Example__CardinalSin: true
+
+  producer:
+    environment:
+      Example__CardinalSin: true
+
+  forward-1:
+    environment:
+      Example__CardinalSin: true
+
+  forward-2:
+    environment:
+      Example__CardinalSin: true
+
+  forward-3:
+    environment:
+      Example__CardinalSin: true
+
+  forward-4:
+    environment:
+      Example__CardinalSin: true
+
+  forward-5:
+    environment:
+      Example__CardinalSin: true
+
+  forward-6:
+    environment:
+      Example__CardinalSin: true
+
+  forward-7:
+    environment:
+      Example__CardinalSin: true
+
+  forward-8:
+    environment:
+      Example__CardinalSin: true
+
+  forward-9:
+    environment:
+      Example__CardinalSin: true
+
+  forward-10:
+    environment:
+      Example__CardinalSin: true
